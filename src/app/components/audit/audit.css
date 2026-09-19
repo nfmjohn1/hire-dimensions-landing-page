@@ -1,0 +1,105 @@
+/* Job Ad Audit — bridges landing CSS vars (--color-navy, --color-orange)
+   Import via AuditTool (client). Optionally also @import in globals.css.
+   See MERGE_NOTES.md */
+
+.audit-root {
+  --audit-navy: var(--color-navy, #0b1f3a);
+  --audit-orange: var(--color-orange, #c45c26);
+  --audit-mist: var(--color-mist, #f4f6f9);
+  --audit-border: var(--color-border, #d5dce6);
+  --audit-muted: var(--color-muted, #5a6b7d);
+  --audit-steel: var(--color-steel, #4a6fa5);
+  color: var(--audit-navy);
+}
+
+/* Buttons — prefer site .btn-primary; these are fallbacks */
+.audit-root .hd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: filter 0.15s ease, background-color 0.15s ease, opacity 0.15s ease;
+}
+.audit-root .hd-btn:focus { outline: none; }
+.audit-root .hd-btn:focus-visible {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--audit-orange);
+}
+.audit-root .hd-btn:disabled { cursor: not-allowed; opacity: 0.6; }
+.audit-root .hd-btn-primary {
+  background: var(--audit-orange);
+  color: #fff;
+}
+.audit-root .hd-btn-primary:hover { filter: brightness(0.92); }
+.audit-root .hd-btn-secondary {
+  border: 1px solid var(--audit-border);
+  background: #fff;
+  color: var(--audit-navy);
+}
+.audit-root .hd-btn-secondary:hover { background: var(--audit-mist); }
+
+.audit-root .hd-input {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--audit-border);
+  background: #fff;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--audit-navy);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+}
+.audit-root .hd-input::placeholder { color: var(--audit-muted); }
+.audit-root .hd-input:focus {
+  outline: none;
+  border-color: var(--audit-steel);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--audit-steel) 30%, transparent);
+}
+.audit-root .hd-label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--audit-navy);
+}
+.audit-root .hd-card {
+  border-radius: 0.75rem;
+  border: 1px solid var(--audit-border);
+  background: #fff;
+  padding: 1.25rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+@media (min-width: 640px) {
+  .audit-root .hd-card { padding: 1.5rem; }
+}
+
+/* Color utilities (Tailwind v4 landing may not define hd-* theme colors) */
+.audit-root .text-hd-navy { color: var(--audit-navy); }
+.audit-root .text-hd-navy\/90 { color: color-mix(in srgb, var(--audit-navy) 90%, transparent); }
+.audit-root .text-hd-muted { color: var(--audit-muted); }
+.audit-root .text-hd-accent { color: var(--audit-orange); }
+.audit-root .bg-hd-navy { background-color: var(--audit-navy); }
+.audit-root .bg-hd-mist { background-color: var(--audit-mist); }
+.audit-root .bg-hd-steel { background-color: var(--audit-steel); }
+.audit-root .bg-hd-accent { background-color: var(--audit-orange); }
+.audit-root .border-hd-border { border-color: var(--audit-border); }
+.audit-root .border-hd-accent\/30 {
+  border-color: color-mix(in srgb, var(--audit-orange) 30%, transparent);
+}
+.audit-root .border-hd-accent\/50 {
+  border-color: color-mix(in srgb, var(--audit-orange) 50%, transparent);
+}
+.audit-root .border-hd-steel\/30 {
+  border-color: color-mix(in srgb, var(--audit-steel) 30%, transparent);
+}
+.audit-root .ring-hd-border { --tw-ring-color: var(--audit-border); }
+
+@media print {
+  .audit-root .no-print { display: none !important; }
+  .audit-root .hd-card {
+    break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
